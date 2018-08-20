@@ -1,0 +1,73 @@
+simName: sh_77_close
+
+pupilSize: 128
+nGS: 1
+nDM: 2
+nSci: 1
+nIters: 100
+loopTime: 0.001
+threads: 1
+
+verbosity: 2
+
+saveSlopes: True
+saveSciPsf: True
+saveWfe: True
+saveSciRes: True
+saveStrehl: True
+
+
+Atmosphere:
+  scrnNo: 1
+  scrnHeights: [0, 5000, 10000, 15000]
+  scrnStrengths: [0.5, 0.3, 0.1, 0.1]
+  windDirs: [0, 45, 90, 135]
+  windSpeeds: [10, 10, 15, 20]
+  wholeScrnSize: 512
+  r0: 0.16
+  L0: [20, 20, 20, 20]
+#  infinite: True
+
+Telescope:
+  telDiam: 4.2
+  obsDiam: 1.2
+  mask: circle
+
+WFS:
+  0:
+    type: ShackHartmann
+    GSPosition: [0, 0]
+    GSHeight: 0
+    GSMag: 6
+    nxSubaps: 7
+    pxlsPerSubap: 10
+    subapFOV: 3
+    wavelength: 600e-9
+#    photonNoise: True
+    eReadNoise: 0
+#    exposureTime: 0.0025
+
+DM:
+  0:
+    type: TT
+    closed: True
+    iMatValue: 0.25
+
+  1:
+    type: FastPiezo
+    closed: True
+    nxActuators: 8
+    iMatValue: 500
+
+Reconstructor:
+  type: MVM
+  svdConditioning: 0.03
+  gain: 0.6
+
+Science:
+  0:
+    position: [0, 0]
+    FOV: 1.
+    wavelength: 1.65e-6
+    pxls: 64
+

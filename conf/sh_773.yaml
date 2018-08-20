@@ -1,0 +1,72 @@
+# simName: sh_773
+pupilSize: 128
+nGS: 1
+nDM: 0
+nSci: 0
+nIters: 30
+loopTime: 0.012
+reconstructor: "MVM"
+
+verbosity: 2
+saveCMat: False
+saveSlopes: True
+saveDmCommands: False
+saveLgsPsf: False
+saveSciPsf: False
+saveSciRes: False
+#saveSciPhase: True
+
+Atmosphere:
+  scrnNo: 2
+  scrnHeights: [0,0]
+  scrnStrengths: [0.5,0.5]
+  windDirs: [0,90]
+  windSpeeds: [10,5]
+  wholeScrnSize: 512
+  r0: 0.16
+
+Telescope:
+  telDiam: 4.2
+  obsDiam: 1.2
+  mask: circle
+
+WFS:
+  0:
+    type: ShackHartmann
+    GSPosition: [0, 0]
+    GSHeight: 0
+    GSMag: 6
+    nxSubaps: 7
+    pxlsPerSubap: 16
+    subapFOV: 4.8
+    wavelength: 600e-9
+
+#DM:
+#  0:
+#    type: TT
+#    closed: True
+#    nxActuators: 2
+#    iMatValue: 2e3
+#    gain: 0.6
+
+#   1:
+#     type: Piezo
+#     closed: True
+#     nxActuators: 8
+#     svdConditioning: 0.05
+#     gain: 0.6
+#     iMatValue: 500
+    
+Reconstructor:
+  0:
+    type: MVM
+    svdConditioning: 0.03
+    gain: 0.6
+
+#Science:
+#  0:
+#    position: [0, 0]
+#    FOV: 4.8
+#    wavelength: 1.65e-6
+#    pxls: 64
+
